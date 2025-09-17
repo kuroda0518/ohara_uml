@@ -1,0 +1,41 @@
+@startuml シーケンス図
+
+
+actor ユーザー
+boundary システムメニュー
+boundary 名前の変更画面
+boundary 名前の変更結果画面
+control 名前取得
+control 名前登録
+entity Robodog
+
+ユーザー -> システムメニュー: 「名前の変更」を選択()
+activate システムメニュー
+システムメニュー -> 名前取得: 現在の名前を取得()
+activate 名前取得
+activate Robodog
+名前取得 -> Robodog: 名前参照()
+Robodog --> 名前取得: 現在の名前
+deactivate Robodog
+
+deactivate 名前取得
+deactivate システムメニュー
+名前取得 -> 名前の変更画面: 表示()
+activate 名前の変更画面
+ユーザー -> 名前の変更画面: 新しい名前を入力()
+名前の変更画面 -> 名前登録: 新しい名前を登録()
+activate 名前登録
+名前登録 -> Robodog: 名前保存()
+activate Robodog
+Robodog --> 名前登録: 保存完了()
+deactivate Robodog
+deactivate 名前登録
+名前登録 -> 名前の変更結果画面: 表示()
+deactivate 名前の変更画面
+activate 名前の変更結果画面
+
+
+
+
+
+@enduml
