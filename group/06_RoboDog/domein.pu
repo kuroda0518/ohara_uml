@@ -1,0 +1,18 @@
+@startuml Robodogドメインモデル図
+skinparam componentStyle rectangle
+
+[Robodog] o-- [名前]
+[Robodog] o-- [時刻]
+[Robodog] o-- [挨拶]
+[Robodog] o-- [2つの整数]
+[Robodog] o-- [足し算結果]
+
+[時刻] <|-- [朝]
+[時刻] <|-- [昼]
+[時刻] <|-- [夜]
+[2つの整数] <|-- [1つ目]
+[2つの整数] <|-- [2つ目]
+
+
+
+
