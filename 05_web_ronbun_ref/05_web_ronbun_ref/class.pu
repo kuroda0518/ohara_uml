@@ -1,5 +1,5 @@
 @startuml Web論文システムクラス図
-skinparam classAttributeIconSize 0
+skinparam classAttributeIconSize 0  
 hide circle
 
 class 学生 {

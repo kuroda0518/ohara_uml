@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor A as "ユーザー"
+
+package "Boundary" as P1 {
+  class B as "ブラウザ"
+  class F as "情報変更画面"
+  class S as "成功画面"
+  class E as "エラーメッセージ"
+}
+
+package "Control" as P2 {
+  class C as "情報変更処理"
+}
+
+package "Entity" as P3 {
+  class D as "ユーザー情報"
+}
+
+' --- 基本フロー（関係） ---
+A -- B : URL入力/遷移
+B -- F : 画面表示
+A -- F : 入力・保存
+F -- C : 入力送信
+C -- D : 更新要求
+D -- C : 更新結果
+C -- S : 成功通知
+S -- A : 完了メッセージ
+
+' --- 代替フロー（関係） ---
+C -- E : 入力不備/一意制約/PW不一致
+E -- F : 再入力を促す
+@enduml
